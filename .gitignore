@@ -3,3 +3,5 @@ player_rpe.log
 librariestemp.py
 python50env
 # END: /home/bryanchasko/code/pythonCS50/.gitignore
+.vscode/settings.json
+.gitignore
