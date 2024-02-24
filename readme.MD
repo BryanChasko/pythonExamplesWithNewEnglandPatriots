@@ -9,4 +9,4 @@ Each Python file in this repository can be executed to see the demonstration of 
 To run a Python file, open your terminal/command prompt, navigate to the directory containing the file, and run the command:
 
 ```bash
-python filename.py
+python3 filename.py
