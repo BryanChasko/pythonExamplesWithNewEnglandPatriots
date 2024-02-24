@@ -6,7 +6,7 @@
 from logging import info, INFO, basicConfig
 import random
 from colorama import Fore
-basicConfig(level=INFO, format="%(asctime)s - %(message)s")
+basicConfig(level=INFO, format="%(message)s")
 info(f"\n{Fore.GREEN}Hello, friend. {Fore.RESET}")
 
 class Playcall:
