@@ -1,41 +1,38 @@
-# Basic Function Example
-def main():
-    x = float(input("To receive its square, enter a number we'll define as x: "))
-    print(x, "squared is", square(x))
+# basic function example -- type hints (PEP 526), f-strings, __name__ guard
+def main() -> None:
+    x = float(input("to receive its square, enter a number we'll define as x: "))
+    print(f"{x} squared is {square(x)}")
 
-def square(variable_n):
-    return variable_n ** 2
 
-main()
+def square(n: float) -> float:
+    return n ** 2
 
-# Football Statistics Comparison with Weighted Values
-def compare_quarterbacks():
-    # Tom Brady's 2007 MVP Season Stats
-    brady_td_2007 = 50  # Touchdowns in 2007
-    brady_int_2007 = 8   # Interceptions in 2007
 
-    # Mac Jones' 2023 Season Stats
-    jones_td_2023 = 10  # Touchdowns in 2023
-    jones_int_2023 = 12  # Interceptions in 2023
+# football statistics comparison with weighted values
+def compare_quarterbacks() -> None:
+    # tom brady 2007 mvp season
+    brady_td_2007: int = 50
+    brady_int_2007: int = 8
 
-    # Calculating weighted impact
+    # mac jones 2023 season
+    jones_td_2023: int = 10
+    jones_int_2023: int = 12
+
     brady_score = calculate_weighted_score(brady_td_2007, brady_int_2007)
     jones_score = calculate_weighted_score(jones_td_2023, jones_int_2023)
 
-    # Displaying the results
-    print(f"Tom Brady's 2007 weighted score: {brady_score}")
-    print(f"Mac Jones' 2023 weighted score: {jones_score}")
+    print(f"tom brady 2007 weighted score: {brady_score}")
+    print(f"mac jones 2023 weighted score: {jones_score}")
 
-def calculate_weighted_score(touchdowns, interceptions):
-    # Weighted calculation: touchdowns are positive, interceptions are squared and negative.
-    # This emphasizes the negative impact of interceptions on a quarterback's performance.
+
+def calculate_weighted_score(touchdowns: int, interceptions: int) -> int:
+    # touchdowns positive, interceptions squared and negative --
+    # crude model: emphasizes the cost of turnovers
+    # results: tom -14, mac -134. doesn't capture td volume or pick-six impact.
+    # see the rust version for a passer rating implementation.
     return touchdowns - (interceptions ** 2)
 
-# this crude example results in Tom -14 and Mac -134, so obviously this
-# isn't a very great comparison as it doesnt properly weight Tom's historic
-# touchdowns that season, or the more important metric we're interested in,
-# the impact of qb TD/INT ratio on the team's success. 2007 tom should receive
-# extra weighting for his long touchdowns as Mac should receive extra weighting
-# for his pick sixes thrown.
 
-compare_quarterbacks()
+if __name__ == "__main__":
+    main()
+    compare_quarterbacks()

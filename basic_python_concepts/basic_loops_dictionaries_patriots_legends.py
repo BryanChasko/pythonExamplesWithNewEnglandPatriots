@@ -1,27 +1,28 @@
-# patriots_legends.py
+# patriots_legends.py -- loops and dictionaries with new england patriots legends
+from typing import TypedDict
 
-# Demonstrating loops and dictionaries with New England Patriots legends
 
-# Create a list of dictionaries, each holding a player's name, position, and college
-patriots_legends = [
-    {"name": "John Hannah", "position": "Offensive Guard", "college": "Alabama"},
-    {"name": "Tom Brady", "position": "Quarterback", "college": "Michigan"},
-    {"name": "Andre Tippett", "position": "Linebacker", "college": "Iowa"},
-    {"name": "Gino Cappelletti", "position": "Wide Receiver/Kicker", "college": "Minnesota"},
-    {"name": "Steve Grogan", "position": "Quarterback", "college": "Kansas State"}
+class Legend(TypedDict):
+    name: str
+    position: str
+    college: str
+
+
+patriots_legends: list[Legend] = [
+    {"name": "John Hannah",       "position": "Offensive Guard",       "college": "Alabama"},
+    {"name": "Tom Brady",         "position": "Quarterback",           "college": "Michigan"},
+    {"name": "Andre Tippett",     "position": "Linebacker",            "college": "Iowa"},
+    {"name": "Gino Cappelletti",  "position": "Wide Receiver/Kicker",  "college": "Minnesota"},
+    {"name": "Steve Grogan",      "position": "Quarterback",           "college": "Kansas State"},
 ]
 
-# Loop through the list of dictionaries and print each player's information
+# example 1: loop over dicts, f-string output
 for legend in patriots_legends:
-    print(legend["name"], ", Position: ", legend["position"], ", College: ", legend["college"])
+    print(f"{legend['name']} | {legend['position']} | {legend['college']}")
 
-"""
-Example 2: Using a list for a more focused output
+print()
 
-# Create a list of just the players' names
-players_names = [legend["name"] for legend in patriots_legends]
-
-# Print each player's name preceded by their number in the list
-for i in range(len(players_names)):
-    print(i + 1, players_names[i])
-"""
+# example 2: list comprehension + enumerate (replaces range(len(...)))
+names: list[str] = [legend["name"] for legend in patriots_legends]
+for i, name in enumerate(names, start=1):
+    print(f"{i}. {name}")
